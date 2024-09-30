@@ -7,6 +7,8 @@ vim.call('plug#begin')
 Plug 'Mofiqul/dracula.nvim'
 Plug 'daschw/leaf.nvim'
 Plug 'catppuccin/nvim'
+Plug 'rose-pine/neovim'
+Plug 'ribru17/bamboo.nvim'
 
 -- Telescope and dependencies (fuzzy finder)
 Plug 'nvim-lua/plenary.nvim'
@@ -60,7 +62,6 @@ Plug 'folke/noice.nvim'
 vim.call('plug#end')
 -- PLUGIN END
 
-
 -- Loading mappings
 require('keymaps')
 
@@ -82,72 +83,9 @@ vim.opt.smartindent = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
--- Theme Configuration
-require("leaf").setup({
-    underlineStyle = "underline",
-    commentStyle = "italic",
-    functionStyle = "NONE",
-    keywordStyle = "italic",
-    statementStyle = "bold",
-    typeStyle = "NONE",
-    variablebuiltinStyle = "italic",
-    transparent = true,
-    colors = {},
-    overrides = {},
-    theme = "auto", -- default, based on vim.o.background, alternatives: "light", "dark"
-    contrast = "low", -- default, alternatives: "medium", "high"
-})
-require("catppuccin").setup({
-    flavour = "mocha", -- latte, frappe, macchiato, mocha
-    background = { -- :h background
-        light = "latte",
-        dark = "mocha",
-    },
-    transparent_background = true, -- disables setting the background color.
-    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-    term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
-    dim_inactive = {
-        enabled = false, -- dims the background color of inactive window
-        shade = "dark",
-        percentage = 0.15, -- percentage of the shade to apply to the inactive window
-    },
-    no_italic = false, -- Force no italic
-    no_bold = false, -- Force no bold
-    no_underline = false, -- Force no underline
-    styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-        comments = { "italic" }, -- Change the style of comments
-        conditionals = { "italic" },
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-        -- miscs = {}, -- Uncomment to turn off hard-coded styles
-    },
-    color_overrides = {},
-    custom_highlights = {},
-    default_integrations = true,
-    integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        notify = false,
-        mini = {
-            enabled = true,
-            indentscope_color = "",
-        },
-        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-    },
-})
-
-vim.cmd('colorscheme catppuccin')
-
+-- Stop use of repeating characters
+local discipline = require('discipline')
+discipline.cowboy()
 
 -- Keep cursor in the middle of the screen
 vim.opt.scrolloff= 999
